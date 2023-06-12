@@ -9,15 +9,9 @@ const SectionCards = (props) => {
     <section className={styles.container}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.cardWrapper}>
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
-        <Card imgUrl='/static/clifford.webp' size='large' />
+        {videos.map((video, idx) => {
+          return <Card key={idx} id={idx} imgUrl={video.imgUrl} size={size} />;
+        })}
       </div>
     </section>
   );

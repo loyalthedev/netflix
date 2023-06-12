@@ -8,23 +8,20 @@ import NavBar from "@/componrents/nav/navbar";
 
 import SectionCards from "@/componrents/card/section-cards";
 import Card from "@/componrents/card/card";
+import { getVideos, getPopularVideos } from "@/lib/videos";
 const inter = Inter({ subsets: ["latin"] });
 const roboto_slab = Roboto_Slab({ subsets: ["latin"] });
-// import { getVideos, getPopularVideos } from "@/lib/videos";
-// const disneyVideos = await getVideos("disney trailer");
 
-// export async function getServerSideProps(context) {
-//   const disneyVideos = await getVideos("disney trailer");
-//   const productivityVideos = await getVideos("Productivity");
+export async function getServerSideProps(context) {
+  const disneyVideos = await getVideos("disney trailer");
+  const productivityVideos = await getVideos("Productivity");
+  const travelVideos = await getVideos("indie music");
+  const popularVideos = await getPopularVideos();
 
-//   const travelVideos = await getVideos("indie music");
-
-//   const popularVideos = await getPopularVideos();
-
-//   return {
-//     props: { disneyVideos, travelVideos, productivityVideos, popularVideos },
-//   };
-// }
+  return {
+    props: { disneyVideos, travelVideos, productivityVideos, popularVideos }, // will be passed to the page component as props
+  };
+}
 
 export default function Home({
   disneyVideos,
@@ -32,6 +29,7 @@ export default function Home({
   productivityVideos,
   popularVideos,
 }) {
+  console.log({ disneyVideos });
   return (
     <div className={styles.container}>
       <Head>
@@ -48,9 +46,6 @@ export default function Home({
           imgUrl='/static/clifford.webp'
         />
         <div className={styles.sectionWrapper}>
-          <SectionCards title='Disney' />
-        </div>
-        {/* <div className={styles.sectionWrapper}>
           <SectionCards title="Disney" videos={disneyVideos} size="large" />
           <SectionCards title="Travel" videos={travelVideos} size="small" />
           <SectionCards
@@ -59,7 +54,7 @@ export default function Home({
             size="medium"
           />
           <SectionCards title="Popular" videos={popularVideos} size="small" />
-        </div> */}
+        </div>
       </div>
     </div>
   );

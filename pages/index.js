@@ -5,7 +5,6 @@ import styles from "../styles/Home.module.css";
 import Banner from "@/componrents/banner/banner";
 import Head from "next/head";
 import NavBar from "@/componrents/nav/navbar";
-
 import SectionCards from "@/componrents/card/section-cards";
 import Card from "@/componrents/card/card";
 import { getVideos, getPopularVideos } from "@/lib/videos";
@@ -29,7 +28,6 @@ export default function Home({
   productivityVideos,
   popularVideos,
 }) {
-  console.log({ disneyVideos });
   return (
     <div className={styles.container}>
       <Head>

@@ -20,8 +20,8 @@ export default function App({ Component, pageProps }) {
       }
     };
     handleLoggedIn();
-  }, []);
-
+  }, [router]);
+  
   useEffect(() => {
     const handleComplete = () => {
       setIsLoading(false);

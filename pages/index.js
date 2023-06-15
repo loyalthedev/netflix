@@ -8,6 +8,7 @@ import NavBar from "@/componrents/nav/navbar";
 import SectionCards from "@/componrents/card/section-cards";
 import Card from "@/componrents/card/card";
 import { getVideos, getPopularVideos } from "@/lib/videos";
+import { startFetchMyQuery } from "@/lib/db/hasura";
 const inter = Inter({ subsets: ["latin"] });
 const roboto_slab = Roboto_Slab({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function Home({
   productivityVideos,
   popularVideos,
 }) {
+  startFetchMyQuery();
   return (
     <div className={styles.container}>
       <Head>
